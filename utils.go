@@ -27,3 +27,16 @@ func (n *Reader) isElementNode() bool {
 	}
 	return false
 }
+
+func (n *Reader) traverse(attr, id string) (*html.Node, bool) {
+	if n.check(attr, id) {
+		return n.HTML, true
+	}
+	for c := n.HTML.FirstChild; c != nil; c = c.NextSibling {
+		res, ok := ConvReader(c).traverse(attr, id)
+		if ok {
+			return res, true
+		}
+	}
+	return nil, false
+}
