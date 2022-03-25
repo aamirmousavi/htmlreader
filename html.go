@@ -24,7 +24,7 @@ func New(str string) (*Reader, error) {
 	}, nil
 }
 
-func convReader(n *html.Node) *Reader {
+func ConvReader(n *html.Node) *Reader {
 	return &Reader{
 		HTML: n,
 	}
