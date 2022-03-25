@@ -1,6 +1,7 @@
 package htmlreader
 
 import (
+	"bytes"
 	"strings"
 
 	"golang.org/x/net/html"
@@ -27,4 +28,13 @@ func convReader(n *html.Node) *Reader {
 	return &Reader{
 		HTML: n,
 	}
+}
+
+func (n *Reader) ToString() (string, error) {
+	var b bytes.Buffer
+	err := html.Reader(n.HTML)
+	if err != nil {
+		return "", err
+	}
+	return b.String(), nil
 }
