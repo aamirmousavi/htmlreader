@@ -7,7 +7,7 @@ func (n *Reader) traverseClass(class string) (*html.Node, bool) {
 		return n.HTML, true
 	}
 	for c := n.HTML.FirstChild; c != nil; c = c.NextSibling {
-		res, ok := convReader(c).traverseClass(class)
+		res, ok := ConvReader(c).traverseClass(class)
 		if ok {
 			return res, true
 		}
