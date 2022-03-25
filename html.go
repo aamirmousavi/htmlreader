@@ -32,7 +32,7 @@ func ConvReader(n *html.Node) *Reader {
 
 func (n *Reader) ToString() (string, error) {
 	var b bytes.Buffer
-	err := html.Render(&b, n.HTML)
+	err := html.Render(n.HTML)
 	if err != nil {
 		return "", err
 	}
